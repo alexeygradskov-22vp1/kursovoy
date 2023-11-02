@@ -35,7 +35,7 @@ namespace kursovoy
                 hashTable.Add(s,s);
                 sortedArray.Add(s);
             }
-
+            sortedArray.sort();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -90,8 +90,14 @@ namespace kursovoy
             finalTime = 0;
             finalCountComp = 0;
             finalCountOfFound = 0;
-            ResultDTO result3 = sortedArray.search("алтынница");
-            Console.WriteLine(result3._status);
+            ResultDTO result3 = new ResultDTO(0, 0, false);
+            foreach(string word in keys)
+            {
+                result3 = sortedArray.search(word);
+                finalTime += result3._time;
+                finalCountComp += result3._avgNumberOfComparisons;
+                if (result3._status) { finalCountOfFound++; }
+            }        
             finalTime = finalTime / keys.Length;
             finalCountComp = finalCountComp / keys.Length;
             DataGridViewRow row2 = new DataGridViewRow();

@@ -14,12 +14,15 @@ namespace kursovoy.StructureArray
         {
             this._size = size;
             array = new List<string>(size);
-            array.Sort();
         }
 
         public void Add(string value)
         {
             array.Add(value);
+        }
+        public void sort()
+        {
+            array.Sort();
         }
 
         public ResultDTO search(string value)
@@ -33,7 +36,6 @@ namespace kursovoy.StructureArray
                 int middle =left+ (right - left) / 2;
                 count++;
                 int comparisonResult = string.Compare(array[middle], value);
-                Console.WriteLine(middle);
                 if (comparisonResult == 0)
                 {
                   
